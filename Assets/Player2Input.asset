@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 439ab3d8edf4ed047b23f89a74bb0dbf, type: 3}
-  m_Name: Player1Input
+  m_Name: Player2Input
   m_EditorClassIdentifier: 
   <Move>k__BackingField:
     m_Name: Move
@@ -30,7 +30,7 @@ MonoBehaviour:
       m_Flags: 4
     - m_Name: left
       m_Id: 14d4b071-0efd-4b29-82db-a1cf8938ce6d
-      m_Path: <Keyboard>/#(A)
+      m_Path: <Keyboard>/#(Z)
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -38,7 +38,7 @@ MonoBehaviour:
       m_Flags: 8
     - m_Name: right
       m_Id: 108df62f-b9fa-41de-8313-193826383840
-      m_Path: <Keyboard>/#(D)
+      m_Path: <Keyboard>/#(C)
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -49,16 +49,8 @@ MonoBehaviour:
     m_Name: Shoot
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 6eeae44e-5155-4cc2-ae08-edbd04a46e3f
+    m_Id: 227d1c38-f77b-4d02-a8bf-5288aa386a2c
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 4621309a-c336-4a7c-843f-5c3415e89525
-      m_Path: <Keyboard>/#(S)
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Shoot
-      m_Flags: 0
+    m_SingletonActionBindings: []
     m_Flags: 0
