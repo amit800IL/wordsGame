@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{dbd2a2f9-0a38-4c32-8c64-0e7a746e80f5}">
+		<property name="assetPath">
+			<value>Treachery and Treasury LOOP.ogg</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>42.16215419501134</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d8b52978-6766-4dd9-b0c9-3b1813e59d13}</destination>
+		</relationship>
+	</object>
+</objects>
