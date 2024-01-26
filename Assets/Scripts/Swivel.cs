@@ -20,11 +20,11 @@ public class Swivel : MonoBehaviour
         targetRotation = Quaternion.Euler(0f, 0f, _swivelRange);
     }
 
-    // Update is called once per frame
     void Update()
     {
         Swiveling();
     }
+
     private void Swiveling()
     {
         float rotateAngle = rotateRight ? _swivelRange : -_swivelRange;
@@ -42,36 +42,6 @@ public class Swivel : MonoBehaviour
 
     private void RotateTowards(float rotationAngle)
     {
-        //float t = Mathf.PingPong(Time.time * rotationAngle * Time.deltaTime, 1f);
-        //if (!isForward)
-        //{
-        //    t = 1f - t; // Reverse the interpolation when going backward
-        //}
-
-        //transform.localRotation = Quaternion.Lerp(startRotation, targetRotation, t);
-
-        //// Check if the rotation reached the target, then toggle the direction
-        //if (t >= 0.99f)
-        //{
-        //    isForward = !isForward;
-        //}
-
-        //if (_swivelSpeed <= Mathf.Epsilon)
-        //{
-        //    return;
-        //}
-        //float cycles = Time.time / _swivelSpeed;
-        //float rawSinWave = Mathf.Sin(cycles * tau);
-        //float movementFactor = (rawSinWave + 1f) / 2f;
-        //transform.localRotation = Quaternion.Lerp(startingRotation, Quaternion.Euler(0, 0, rotationAngle * movementFactor), _swivelSpeed * timeCount);
-        //transform.position = startingRotation + offset;
-
         transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0, 0, rotationAngle), _swivelSpeed);
-
-        //if (transform.localRotation.eulerAngles.z >= Quaternion.Euler(0, 0, rotationAngle).z)
-        //{
-        //    _swivelRange = -_swivelRange;
-        //    return;
-        //}
     }
 }
