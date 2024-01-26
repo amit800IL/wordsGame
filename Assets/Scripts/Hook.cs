@@ -72,7 +72,7 @@ public class Hook : MonoBehaviour
 
     private IEnumerator ExtendHook()
     {
-        while (_canShoot && transform.localScale.y < _maxHookSize)
+        while (_canShoot && transform.localScale.y <= _maxHookSize)
         {
             float newYScale = transform.localScale.y + _hookSpeed * Time.deltaTime;
             transform.localScale = new Vector3(transform.localScale.x, newYScale, transform.localScale.z);
@@ -122,11 +122,6 @@ public class Hook : MonoBehaviour
             StopCoroutine(retractHookCoroutine);
             retractHookCoroutine = null;
         }
-    }
-
-    private void CatchWord()
-    {
-
     }
     private void StartEntangle()
     {
