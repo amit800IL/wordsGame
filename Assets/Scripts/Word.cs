@@ -10,14 +10,19 @@ public class Word : MonoBehaviour
     [SerializeField] private float letterScale;
 
     [SerializeField] private float fixTorque = 1;
+    [SerializeField] private Rigidbody boxRigidbody;
 
     public BoxCollider boxCollider => GetComponentInChildren<BoxCollider>();
 
-    [SerializeField] private Rigidbody boxRigidbody;
-    //public Rigidbody rigidbody => GetComponentInChildren<Rigidbody>();
+
     public Rigidbody pivot => GetComponent<Rigidbody>();
 
     public int Length => wordString.Length;
+
+    public void Catch(Rigidbody hookRigidbody)
+    {
+        transform.parent = hookRigidbody.transform;
+    }
 
     private void FixedUpdate()
     {
