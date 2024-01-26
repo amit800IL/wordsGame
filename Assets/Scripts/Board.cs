@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class Board : MonoBehaviour //Responsible for word bank management and deciding which words to spawn
 {
     [Header("Attributes")]

@@ -9,24 +9,39 @@ public class Swivel : MonoBehaviour
     [SerializeField] private float _swivelSpeed;
     [SerializeField] private float _swivelRange;
 
+    private Quaternion startRotation;
+    private Quaternion targetRotation;
 
+    bool rotateRight = true;
 
-    // Update is called once per frame
+    void Start()
+    {
+        startRotation = transform.rotation;
+        targetRotation = Quaternion.Euler(0f, 0f, _swivelRange);
+    }
+
     void Update()
     {
         Swiveling();
     }
+
     private void Swiveling()
     {
-        RotateTowards(_swivelRange);
+        float rotateAngle = rotateRight ? _swivelRange : -_swivelRange;
+        RotateTowards(rotateAngle);
+        float currentAngle = transform.rotation.z;
+        if (currentAngle >= targetRotation.z - 0.1)
+        {
+            rotateRight = false;
+        }
+        if (currentAngle <= startRotation.z + 0.1)
+        {
+            rotateRight = true;
+        }
     }
+
     private void RotateTowards(float rotationAngle)
     {
-    
-      transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(90, 0, rotationAngle), _swivelSpeed);
-        Debug.Log(transform.localRotation.eulerAngles.z) ; // fix rotation checker
-        //Debug.Log(transform.localEulerAngles.z);
-        // if (transform.localEulerAngles.z >= rotationAngle) return;
-        // transform.Rotate(0, 0, _swivelSpeed);
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0, 0, rotationAngle), _swivelSpeed);
     }
 }
