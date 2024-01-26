@@ -29,19 +29,30 @@ public class Swivel : MonoBehaviour
     {
         float rotateAngle = rotateRight ? _swivelRange : -_swivelRange;
         RotateTowards(rotateAngle);
-        float currentAngle = transform.rotation.z;
-        if (currentAngle >= targetRotation.z - 0.1)
+        float currentAngle = ConvertAngle(transform.localRotation.eulerAngles.y);
+        if (currentAngle >= ConvertAngle(targetRotation.eulerAngles.z) - 0.1)
         {
             rotateRight = false;
         }
-        if (currentAngle <= startRotation.z + 0.1)
+        if (currentAngle <= -ConvertAngle(targetRotation.eulerAngles.z) + 0.1)
         {
             rotateRight = true;
         }
     }
 
+    private float ConvertAngle(float angle)
+    {
+        if(angle >=0 && angle <= 180)
+        {
+            return angle;
+        }
+        return angle - 360;
+    }
+
     private void RotateTowards(float rotationAngle)
     {
-        transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(0, 0, rotationAngle), _swivelSpeed);
+        float xLocalRotation = transform.localRotation.eulerAngles.x;
+        float yLocalRotation = transform.localRotation.eulerAngles.y;
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(xLocalRotation, yLocalRotation, rotationAngle), _swivelSpeed);
     }
 }
