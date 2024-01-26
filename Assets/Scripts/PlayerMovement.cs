@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
         // Cast rays to the left and right
         RaycastHit hitLeft, hitRight;
 
-        // Left raycast
+
         if (Physics.Raycast(currentPosition, -transform.right, out hitLeft, _rayCastDistance))
         {
             Debug.DrawRay(currentPosition, -transform.right * hitLeft.distance, Color.blue);
@@ -58,12 +58,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.DrawRay(currentPosition, transform.right * hitRight.distance, Color.red);
             MoveWithRaycast(hitRight.normal.normalized, input.x);
         }
-        // No raycast hit
-        else
-        {
-            Debug.Log("No raycast hit. Free movement.");
-            transform.Translate(Vector3.right * movementSpeed * input.x * Time.deltaTime);
-        }
+
     }
 
     private void MoveWithRaycast(Vector3 direction, float input)
