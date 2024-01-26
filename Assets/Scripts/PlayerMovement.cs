@@ -36,35 +36,33 @@ public class PlayerMovement : MonoBehaviour
     private void MovePlayer(InputAction.CallbackContext inputAction)
     {
         Vector2 movementInput = inputAction.ReadValue<Vector2>();
-        MoveInDirection(movementInput);
+
+        if (inputAction.performed)
+        {
+            moveInDirection(movementInput);
+        }
     }
 
-    private void MoveInDirection(Vector2 input)
+    private void moveInDirection(Vector2 input)
     {
         Vector3 currentPosition = transform.position;
 
-        // Cast rays to the left and right
         RaycastHit hitLeft, hitRight;
-
 
         if (Physics.Raycast(currentPosition, -transform.right, out hitLeft, _rayCastDistance))
         {
-            Debug.DrawRay(currentPosition, -transform.right * hitLeft.distance, Color.blue);
             MoveWithRaycast(hitLeft.normal.normalized, input.x);
         }
-        // Right raycast
+
         else if (Physics.Raycast(currentPosition, transform.right, out hitRight, _rayCastDistance))
         {
-            Debug.DrawRay(currentPosition, transform.right * hitRight.distance, Color.red);
             MoveWithRaycast(hitRight.normal.normalized, input.x);
         }
-
     }
 
     private void MoveWithRaycast(Vector3 direction, float input)
     {
         transform.position += direction * movementSpeed * input * Time.deltaTime;
     }
-
 }
 

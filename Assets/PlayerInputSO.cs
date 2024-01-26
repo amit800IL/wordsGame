@@ -6,17 +6,17 @@ using UnityEngine.InputSystem;
 public class PlayerInputSO : ScriptableObject
 {
     [field: SerializeField] public InputAction Move { get; private set; }
-    [field: SerializeField] public InputAction Swivel { get; private set; }
+    [field: SerializeField] public InputAction Shoot { get; private set; }
 
     private void OnEnable()
     {
         Move.Enable();
-        Swivel.Enable();
+        Shoot.Enable();
     }
 
     private void OnDisable()
     {
         Move.Disable();
-        Swivel.Disable();
+        Shoot.Disable();
     }
 }
