@@ -5,17 +5,20 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("ControllerAttributes")]
     [SerializeField] private float _railSizeMultiplyer;
+    [SerializeField] private float _rayCastDistance;
     [Header("Components")]
     [SerializeField] private GameObject _rail;
     [SerializeField] private float movementSpeed;
     [SerializeField] private PlayerInputSO playerInput;
     [SerializeField] private Rigidbody playerRigibBody;
 
+    private Vector3 initialPosition;
     private void Awake()
     {
         if (_rail == null) return;
-        _rail.transform.localScale = new Vector3(transform.localScale.x * (_railSizeMultiplyer * _railSizeMultiplyer), 1, 1);
-        transform.localPosition = Vector3.zero + new Vector3(0, 0, 1);
+        initialPosition = transform.position;
+        transform.localScale = new Vector3(transform.localScale.x * (_railSizeMultiplyer * _railSizeMultiplyer), 1, 1);
+        transform.localPosition = initialPosition;
     }
 
     private void Start()
@@ -33,23 +36,40 @@ public class PlayerMovement : MonoBehaviour
     private void MovePlayer(InputAction.CallbackContext inputAction)
     {
         Vector2 movementInput = inputAction.ReadValue<Vector2>();
-        moveOnRail(movementInput.x);
+        MoveInDirection(movementInput);
     }
 
-    private void moveOnRail(float direction)
+    private void MoveInDirection(Vector2 input)
     {
-        float nextPosition = transform.localPosition.x + (movementSpeed * direction * Time.deltaTime);
-        float movementRange = Mathf.Abs(_railSizeMultiplyer);
+        Vector3 currentPosition = transform.position;
 
-        if (nextPosition > movementRange || nextPosition < -movementRange)
+        // Cast rays to the left and right
+        RaycastHit hitLeft, hitRight;
+
+        // Left raycast
+        if (Physics.Raycast(currentPosition, -transform.right, out hitLeft, _rayCastDistance))
         {
-            Debug.Log("Movement out of range.");
-            return;
+            Debug.DrawRay(currentPosition, -transform.right * hitLeft.distance, Color.blue);
+            MoveWithRaycast(hitLeft.normal.normalized, input.x);
         }
+        // Right raycast
+        else if (Physics.Raycast(currentPosition, transform.right, out hitRight, _rayCastDistance))
+        {
+            Debug.DrawRay(currentPosition, transform.right * hitRight.distance, Color.red);
+            MoveWithRaycast(hitRight.normal.normalized, input.x);
+        }
+        // No raycast hit
+        else
+        {
+            Debug.Log("No raycast hit. Free movement.");
+            transform.Translate(Vector3.right * movementSpeed * input.x * Time.deltaTime);
+        }
+    }
 
-        transform.localPosition += new Vector3(movementSpeed * direction * Time.deltaTime, 0, 0);
-        Debug.Log($"New Position: {transform.localPosition}");
+    private void MoveWithRaycast(Vector3 direction, float input)
+    {
+        transform.position += direction * movementSpeed * input * Time.deltaTime;
     }
 
 }
-  
+

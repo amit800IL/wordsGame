@@ -10,41 +10,40 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 439ab3d8edf4ed047b23f89a74bb0dbf, type: 3}
-  m_Name: Player3Input 2
+  m_Name: Player2Input
   m_EditorClassIdentifier: 
-  <MoveRight>k__BackingField:
-    m_Name: Move Right
+  <Move>k__BackingField:
+    m_Name: Move
     m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 0eb9fa28-9c9d-4d56-8f1d-09d42650c963
+    m_ExpectedControlType: Vector2
+    m_Id: a7899484-68d6-483b-aade-846d6c589633
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: e12b5297-b636-4f7e-9eae-ef464cbbfd60
-      m_Path: <Keyboard>/#(A)
+    - m_Name: 2D Vector
+      m_Id: c0590b18-1238-4e04-ab73-7665456d12f6
+      m_Path: 2DVector
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Move Right
-      m_Flags: 0
-    m_Flags: 0
-  <MoveLeft>k__BackingField:
-    m_Name: Move Left
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 3299a15f-2723-4474-bc44-0dad53a5a145
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: c0362999-6eff-4b55-81bb-0585daf0cb4b
-      m_Path: <Keyboard>/#(D)
+      m_Action: Move
+      m_Flags: 4
+    - m_Name: left
+      m_Id: 14d4b071-0efd-4b29-82db-a1cf8938ce6d
+      m_Path: <Keyboard>/#(Z)
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Move Left
-      m_Flags: 0
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: right
+      m_Id: 108df62f-b9fa-41de-8313-193826383840
+      m_Path: <Keyboard>/#(C)
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 8
     m_Flags: 0
   <Swivel>k__BackingField:
     m_Name: Swivel
