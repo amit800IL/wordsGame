@@ -7,18 +7,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _railSizeMultiplyer;
     [SerializeField] private float _rayCastDistance;
     [Header("Components")]
-    [SerializeField] private GameObject _rail;
     [SerializeField] private float movementSpeed;
     [SerializeField] private PlayerInputSO playerInput;
-    [SerializeField] private Rigidbody playerRigibBody;
+    [SerializeField] private GameObject wordHolder;
 
     private Vector3 initialPosition;
     private void Awake()
     {
-        if (_rail == null) return;
-        initialPosition = transform.position;
-        transform.localScale = new Vector3(transform.localScale.x * (_railSizeMultiplyer * _railSizeMultiplyer), 1, 1);
-        transform.localPosition = initialPosition;
+        wordHolder.transform.localScale = new Vector3(transform.localScale.x * ( _railSizeMultiplyer), 1, 1);
+        transform.parent = wordHolder.transform;
+        transform.localPosition =  Vector3.zero + new Vector3(0, 0, 1);
+
     }
 
     private void Start()
@@ -39,30 +38,19 @@ public class PlayerMovement : MonoBehaviour
 
         if (inputAction.performed)
         {
-            moveInDirection(movementInput);
+            Move(movementInput.x);
         }
     }
 
-    private void moveInDirection(Vector2 input)
+
+    private void Move(float direction)
     {
-        Vector3 currentPosition = transform.position;
-
-        RaycastHit hitLeft, hitRight;
-
-        if (Physics.Raycast(currentPosition, -transform.right, out hitLeft, _rayCastDistance))
-        {
-            MoveWithRaycast(hitLeft.normal.normalized, input.x);
-        }
-
-        else if (Physics.Raycast(currentPosition, transform.right, out hitRight, _rayCastDistance))
-        {
-            MoveWithRaycast(hitRight.normal.normalized, input.x);
-        }
+        float nextPosition = transform.localPosition.x + (transform.localScale.x * direction);
+        float movementRange = (1 - (1 / _railSizeMultiplyer)) / 2 + 0.01f;
+        if (nextPosition > movementRange || nextPosition < -movementRange) return;
+        transform.localPosition += new Vector3(transform.localScale.x * direction, 0, 0);
     }
 
-    private void MoveWithRaycast(Vector3 direction, float input)
-    {
-        transform.position += direction * movementSpeed * input * Time.deltaTime;
-    }
+
 }
 

@@ -14,125 +14,56 @@ public class Hook : MonoBehaviour
     [SerializeField] private PlayerInputSO playerInput;
     bool _canShoot = true;
     private float timer;
+    private bool _isShooting = false;
+    private bool isHolding = false;
 
-    private Coroutine extendHookCoroutine;
-    private Coroutine retractHookCoroutine;
 
     private void Awake()
     {
         _minHookSize = transform.localScale.y;
     }
-
+    private void SetHold(bool state)
+    {
+        isHolding = state;
+    }
     private void Start()
     {
-        playerInput.Shoot.performed += PlayerShooting;
-        playerInput.Shoot.canceled += PlayerShooting;
+        playerInput.Shoot.performed += ctx => SetHold(true);
+        playerInput.Shoot.canceled += ctx => SetHold(false);
     }
 
     private void OnDisable()
     {
-        playerInput.Shoot.performed -= PlayerShooting;
-        playerInput.Shoot.canceled -= PlayerShooting;
-        StopExtendHookCoroutine();
-        StopRetractHookCoroutine();
+        playerInput.Shoot.performed -= ctx => SetHold(true);
+        playerInput.Shoot.canceled -= ctx => SetHold(false);
     }
 
     private void Update()
     {
         if (timer < Time.deltaTime)
         {
-            ChangeShootState(true);
+            _canShoot = true;
         }
+        if (isHolding) MoveHook(1);
+         if (!isHolding) MoveHook(-1);
+      
 
-        if (transform.localScale.y >= _maxHookSize)
-        {
-            StartRetractHookCorutine();
-        }
-    }
-    private void PlayerShooting(InputAction.CallbackContext inputAction)
-    {
-        if (inputAction.performed && _canShoot)
-        {
-            if (retractHookCoroutine != null)
-            {
-                StopRetractHookCoroutine();
-                StartExtendHookCorutine();
-            }
-            else if (extendHookCoroutine != null)
-            {
-                StopExtendHookCoroutine();
-                StartRetractHookCorutine();
-            }
-            else
-            {
-                StartExtendHookCorutine();
-            }
-        }
+
     }
 
-    private IEnumerator ExtendHook()
+    private void MoveHook(int direction)
     {
-        while (_canShoot && transform.localScale.y <= _maxHookSize)
-        {
-            float newYScale = transform.localScale.y + _hookSpeed * Time.deltaTime;
-            transform.localScale = new Vector3(transform.localScale.x, newYScale, transform.localScale.z);
-            yield return null;
-        }
+        Debug.Log("dir:" + direction);
+        if (direction == 1 && transform.localScale.y <= _maxHookSize) transform.localScale += new Vector3(0, _hookSpeed * direction * Time.deltaTime, 0);
+        else  transform.localScale += new Vector3(0, _hookSpeed * direction * Time.deltaTime, 0);
     }
-
-    private IEnumerator RetractHook()
-    {
-        while (_canShoot && transform.localScale.y >= _minHookSize)
-        {
-            float newYScale = transform.localScale.y - _hookSpeed * Time.deltaTime;
-            transform.localScale = new Vector3(transform.localScale.x, newYScale, transform.localScale.z);
-            yield return null;
-        }
-    }
-
-    private void StartExtendHookCorutine()
-    {
-        if (extendHookCoroutine == null)
-        {
-            extendHookCoroutine = StartCoroutine(ExtendHook());
-        }
-    }
-
-    private void StopExtendHookCoroutine()
-    {
-        if (extendHookCoroutine != null)
-        {
-            StopCoroutine(extendHookCoroutine);
-            extendHookCoroutine = null;
-        }
-    }
-
-    private void StartRetractHookCorutine()
-    {
-        if (retractHookCoroutine == null)
-        {
-            retractHookCoroutine = StartCoroutine(RetractHook());
-        }
-    }
-
-    private void StopRetractHookCoroutine()
-    {
-        if (retractHookCoroutine != null)
-        {
-            StopCoroutine(retractHookCoroutine);
-            retractHookCoroutine = null;
-        }
-    }
+ 
     private void StartEntangle()
     {
-        ChangeShootState(false);
+       _canShoot = false;   
         timer = Time.deltaTime + _entangleCoolDown;
     }
-    private void ChangeShootState(bool state)
-    {
-        _canShoot = state;
-        _boxCollider.enabled = state;
-    }
+
     private void OnCollisionEnter(Collision col)
     {
         if (col.collider.CompareTag("Hook")) StartEntangle();
