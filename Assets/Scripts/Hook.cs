@@ -53,8 +53,20 @@ public class Hook : MonoBehaviour
     {
         if (inputAction.performed && _canShoot)
         {
-            StopRetractHookCoroutine();
-            StartExtendHookCorutine();
+            if (retractHookCoroutine != null)
+            {
+                StopRetractHookCoroutine();
+                StartExtendHookCorutine();
+            }
+            else if (extendHookCoroutine != null)
+            {
+                StopExtendHookCoroutine();
+                StartRetractHookCorutine();
+            }
+            else
+            {
+                StartExtendHookCorutine();
+            }
         }
     }
 
@@ -68,7 +80,7 @@ public class Hook : MonoBehaviour
         }
     }
 
-    private IEnumerator retractHook()
+    private IEnumerator RetractHook()
     {
         while (_canShoot && transform.localScale.y >= _minHookSize)
         {
@@ -99,13 +111,13 @@ public class Hook : MonoBehaviour
     {
         if (retractHookCoroutine == null)
         {
-            retractHookCoroutine = StartCoroutine(retractHook());
+            retractHookCoroutine = StartCoroutine(RetractHook());
         }
     }
 
     private void StopRetractHookCoroutine()
     {
-        if (retractHookCoroutine != null) 
+        if (retractHookCoroutine != null)
         {
             StopCoroutine(retractHookCoroutine);
             retractHookCoroutine = null;
