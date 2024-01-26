@@ -12,6 +12,8 @@ public class Board : MonoBehaviour //Responsible for word bank management and de
 
     private WordSpawner wordSpawner;
 
+
+
     private void Awake()
     {
         wordSpawner = GetComponent<WordSpawner>();

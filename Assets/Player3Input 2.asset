@@ -12,39 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 439ab3d8edf4ed047b23f89a74bb0dbf, type: 3}
   m_Name: Player3Input 2
   m_EditorClassIdentifier: 
-  <MoveRight>k__BackingField:
-    m_Name: Move Right
+  <Move>k__BackingField:
+    m_Name: Move
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 0eb9fa28-9c9d-4d56-8f1d-09d42650c963
+    m_Id: 09278ee5-c95c-4ddd-bee3-6b677816a87b
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: e12b5297-b636-4f7e-9eae-ef464cbbfd60
-      m_Path: <Keyboard>/#(A)
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move Right
-      m_Flags: 0
-    m_Flags: 0
-  <MoveLeft>k__BackingField:
-    m_Name: Move Left
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 3299a15f-2723-4474-bc44-0dad53a5a145
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: c0362999-6eff-4b55-81bb-0585daf0cb4b
-      m_Path: <Keyboard>/#(D)
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move Left
-      m_Flags: 0
+    m_SingletonActionBindings: []
     m_Flags: 0
   <Swivel>k__BackingField:
     m_Name: Swivel
