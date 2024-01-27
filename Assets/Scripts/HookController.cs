@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class HookController : MonoBehaviour
@@ -10,25 +11,42 @@ public class HookController : MonoBehaviour
     [Space, Header("Properties")]
     [SerializeField] private float maxHookRange;
     [SerializeField] private float hookExtendSpeed, hookRetractSpeed;
+    [SerializeField] private LayerMask wordBoxesLayerMask;
 
     [Space, Header("Components")]
     [SerializeField] private Transform hookTransform;
     [SerializeField] private LineRenderer ropeLineRenderer;
 
     private IEnumerator ExtendHookLoop()
-    {        
+    {
         float hookDistance = Vector3.Distance(hookTransform.position, transform.position);
         while (hookDistance < maxHookRange)
         {
-            hookTransform.position += hookTransform.up * hookExtendSpeed * Time.deltaTime;
+            Vector3 targetPosition= hookTransform.position + hookTransform.up * hookExtendSpeed * Time.deltaTime;
+            //hookTransform.position += hookTransform.up * hookExtendSpeed * Time.deltaTime;
+
+            bool raycast = Physics.Raycast(hookTransform.position, hookTransform.up, out RaycastHit hit, hookRetractSpeed * Time.deltaTime, wordBoxesLayerMask);
+            if (!raycast)
+                hookTransform.position = targetPosition;
+            else if (hit.collider.GetComponent<Word>())
+            {
+                hit.transform.parent.parent = hookTransform;
+                break;
+            }
+
+
 
             hookDistance = Vector3.Distance(hookTransform.position, transform.position);
             yield return null;
         }
+
+        RetractHook();
     }
 
     private IEnumerator RetractHookLoop()
-    {        
+    {
+        playerController.playerMode = PlayerController.PlayerMode.HookRetracts;
+
         Vector3 hookOffset = hookTransform.position - transform.position;
         while (Vector3.Dot(hookOffset, hookTransform.up) > 0)
         {
@@ -37,6 +55,8 @@ public class HookController : MonoBehaviour
             hookOffset = hookTransform.position - transform.position;
             yield return null;
         }
+
+        playerController.playerMode = PlayerController.PlayerMode.Roaming;
     }
 
     private void ExtendHook()
@@ -54,9 +74,9 @@ public class HookController : MonoBehaviour
         if (playerController.playerMode == PlayerController.PlayerMode.HookExtends)
         {
             StopAllCoroutines();
-            playerController.playerMode = PlayerController.PlayerMode.HookRetracts;
+            
             StartCoroutine(RetractHookLoop());
-            playerController.playerMode = PlayerController.PlayerMode.Roaming;
+            
         }
     }
 
