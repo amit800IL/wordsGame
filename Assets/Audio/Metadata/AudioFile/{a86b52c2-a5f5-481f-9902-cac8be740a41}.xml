@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{a86b52c2-a5f5-481f-9902-cac8be740a41}">
+		<property name="assetPath">
+			<value>Treachery and Treasury INTRO.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.2432426303854873</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d8b52978-6766-4dd9-b0c9-3b1813e59d13}</destination>
+		</relationship>
+	</object>
+</objects>

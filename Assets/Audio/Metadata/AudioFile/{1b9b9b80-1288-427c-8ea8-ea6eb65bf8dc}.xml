@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{1b9b9b80-1288-427c-8ea8-ea6eb65bf8dc}">
+		<property name="assetPath">
+			<value>Rope Flying Start.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.37752083333333336</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d8b52978-6766-4dd9-b0c9-3b1813e59d13}</destination>
+		</relationship>
+	</object>
+</objects>
