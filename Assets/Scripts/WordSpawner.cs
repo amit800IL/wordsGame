@@ -3,11 +3,6 @@ using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
 
-public static class WordSpawning
-{
-    public static string ABC = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-}
-
 public class WordSpawner : MonoBehaviour //Actually spawns the words
 {
     [Header("Word Settings")]
@@ -18,16 +13,12 @@ public class WordSpawner : MonoBehaviour //Actually spawns the words
     [SerializeField] private float spawnHeight;
     [SerializeField] private float spawnAreaSize;
 
-    private Board board;
-    private LetterBlockCreator letterBlockCreator;
+    [SerializeField]private Board board;
+    [SerializeField]private LetterBlockCreator letterBlockCreator;
 
     //private string[] wordBank = { "ONE", "QUIT", "SHAM", "BOTTLE", "PARROT", "SWORD", "CAPTAIN", "TREASURE", "PLUNDER", "EYEPATCH" };
 
-    private void Start()
-    {
-        board = GetComponent<Board>();
-        letterBlockCreator = GetComponent<LetterBlockCreator>();
-    }
+
 
     private Word CreateWord(string wordText)
     {
@@ -58,6 +49,7 @@ public class WordSpawner : MonoBehaviour //Actually spawns the words
         Vector3 spawnPosition = new Vector3(squarePosition.x * spawnAreaSize, spawnHeight, squarePosition.y * spawnAreaSize);
 
         wordObj.transform.position = spawnPosition;
+        Debug.Log("Spawned");
     }
 
     private void Update()
