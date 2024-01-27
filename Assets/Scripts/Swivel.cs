@@ -12,11 +12,6 @@ public class Swivel : MonoBehaviour
     private Quaternion startRotation;
     private Quaternion targetRotation;
 
-
-    const float tau = Mathf.PI * 2;
-
-    bool rotateRight = true;
-
     void Start()
     {
         startRotation = transform.localRotation;
@@ -27,31 +22,7 @@ public class Swivel : MonoBehaviour
 
     void Update()
     {
-        Swiveling();
-    }
-
-    private void Swiveling()
-    {
-        //float rotateAngle = rotateRight ? _swivelRange : -_swivelRange;
         RotateTowards(_swivelRange);
-        //float currentAngle = ConvertAngle(transform.localRotation.eulerAngles.y);
-        //if (currentAngle >= ConvertAngle(targetRotation.eulerAngles.z) - 0.1)
-        //{
-        //    rotateRight = false;
-        //}
-        //if (currentAngle <= -ConvertAngle(targetRotation.eulerAngles.z) + 0.1)
-        //{
-        //    rotateRight = true;
-        //}
-    }
-
-    private float ConvertAngle(float angle)
-    {
-        if(angle >=0 && angle <= 180)
-        {
-            return angle;
-        }
-        return angle - 360;
     }
 
     private void RotateTowards(float rotationAngle)
@@ -60,7 +31,7 @@ public class Swivel : MonoBehaviour
         {
             return;
         }
-        float cycles = Time.time / _swivelSpeed;
+        float cycles = (Time.time % (2 * MathF.PI)) / _swivelSpeed;
         float rawSinWave = Mathf.Sin(cycles * Mathf.Deg2Rad);
         float movementFactor = (rawSinWave + 1f) / 2f;
 
