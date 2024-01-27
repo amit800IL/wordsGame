@@ -20,7 +20,7 @@ public class WordSpawner : MonoBehaviour //Actually spawns the words
 
 
 
-    private Word CreateWord(string wordText)
+    public Word CreateWord(string wordText)
     {
         Word wordObj = Instantiate(wordPrefab, Vector3.zero, Random.rotationUniform);
         wordObj.gameObject.name = $"WordObj : {wordText}";
