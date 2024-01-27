@@ -19,6 +19,10 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    public float GetWordHolderScale()
+    {
+        return _railSizeMultiplyer;
+    }
     private void Move(float direction)
     {
         float nextPosition = transform.localPosition.x + (transform.localScale.x * direction);
