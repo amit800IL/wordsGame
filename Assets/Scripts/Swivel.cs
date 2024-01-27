@@ -12,6 +12,8 @@ public class Swivel : MonoBehaviour
     private Quaternion startRotation;
     private Quaternion targetRotation;
 
+    private float timer = 0;
+
     void Start()
     {
         startRotation = transform.localRotation;
@@ -22,7 +24,9 @@ public class Swivel : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(GetComponentInParent<PlayerController>().playerMode);
         RotateTowards(_swivelRange);
+        timer += Time.deltaTime;
     }
 
     private void RotateTowards(float rotationAngle)
@@ -31,7 +35,7 @@ public class Swivel : MonoBehaviour
         {
             return;
         }
-        float cycles = (Time.time % (2 * MathF.PI)) / _swivelSpeed;
+        float cycles = timer / _swivelSpeed ;// % (2 * MathF.PI);
         float rawSinWave = Mathf.Sin(cycles * Mathf.Deg2Rad);
         float movementFactor = (rawSinWave + 1f) / 2f;
 
