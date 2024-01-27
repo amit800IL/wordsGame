@@ -177,7 +177,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &283126687
 Transform:
   m_ObjectHideFlags: 0
@@ -1625,6 +1625,7 @@ GameObject:
   - component: {fileID: 1577342886}
   - component: {fileID: 1577342885}
   - component: {fileID: 1577342884}
+  - component: {fileID: 1577342890}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -1769,6 +1770,24 @@ MonoBehaviour:
   movementSpeed: 10
   playerInput: {fileID: 11400000, guid: 4f1d9d46b6b93d042a5e27b829c4aa47, type: 2}
   wordHolder: {fileID: 1093204060}
+--- !u!114 &1577342890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577342883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ca0e8c68303fd4eb5ff16f00025b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}
+  maxHookRange: 0
+  hookExtendSpeed: 0
+  hookRetractSpeed: 0
+  hookTransform: {fileID: 0}
+  ropeLineRenderer: {fileID: 0}
 --- !u!1 &1956650473
 GameObject:
   m_ObjectHideFlags: 0
