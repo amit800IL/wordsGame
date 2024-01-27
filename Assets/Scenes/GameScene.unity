@@ -2037,6 +2037,9 @@ MonoBehaviour:
   maxHookRange: 20
   hookExtendSpeed: 15
   hookRetractSpeed: 20
+  wordBoxesLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
   hookTransform: {fileID: 1254944875}
   ropeLineRenderer: {fileID: 680537683}
 --- !u!114 &1577342891
