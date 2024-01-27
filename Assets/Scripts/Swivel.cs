@@ -24,7 +24,6 @@ public class Swivel : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(GetComponentInParent<PlayerController>().playerMode);
         RotateTowards(_swivelRange);
         timer += Time.deltaTime;
     }

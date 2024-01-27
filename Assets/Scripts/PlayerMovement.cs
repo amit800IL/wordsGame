@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private PlayerInputSO playerInput;
     [SerializeField] private GameObject wordHolder;
 
-    private Vector3 initialPosition;
     private void Awake()
     {
         wordHolder.transform.localScale = new Vector3(transform.localScale.x * ( _railSizeMultiplyer), 1, 1);
@@ -19,29 +18,6 @@ public class PlayerMovement : MonoBehaviour
         transform.localPosition =  Vector3.zero + new Vector3(0, 0, 1);
 
     }
-
-    private void Start()
-    {
-        playerInput.Move.performed += MovePlayer;
-        playerInput.Move.canceled += MovePlayer;
-    }
-
-    private void OnDisable()
-    {
-        playerInput.Move.performed -= MovePlayer;
-        playerInput.Move.canceled -= MovePlayer;
-    }
-
-    private void MovePlayer(InputAction.CallbackContext inputAction)
-    {
-        Vector2 movementInput = inputAction.ReadValue<Vector2>();
-
-        if (inputAction.performed)
-        {
-            Move(movementInput.x);
-        }
-    }
-
 
     private void Move(float direction)
     {
@@ -51,6 +27,14 @@ public class PlayerMovement : MonoBehaviour
         transform.localPosition += new Vector3(transform.localScale.x * direction, 0, 0);
     }
 
+    private void OnEnable()
+    {
+        playerInput.Move.performed += ctx => Move(ctx.ReadValue<Vector2>().x);
+    }
 
+    private void OnDisable()
+    {
+        playerInput.Move.performed -= ctx => Move(ctx.ReadValue<Vector2>().x);
+    }
 }
 

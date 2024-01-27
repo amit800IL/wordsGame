@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5364316764528266992}
   - component: {fileID: 5876294980419647815}
   - component: {fileID: 6036069705163134809}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 2157168652489419965}
   - component: {fileID: 7159424765756805415}
   - component: {fileID: 4543447523003825900}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Word Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
