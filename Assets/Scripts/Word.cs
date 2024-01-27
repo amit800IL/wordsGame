@@ -19,9 +19,9 @@ public class Word : MonoBehaviour
 
     public int Length => wordString.Length;
 
-    public void Catch(Rigidbody hookRigidbody)
+    public void Catch(Transform hookTransform)
     {
-        transform.parent = hookRigidbody.transform;
+        transform.parent = hookTransform;
     }
 
     private void FixedUpdate()
