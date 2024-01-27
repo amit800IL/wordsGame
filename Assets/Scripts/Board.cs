@@ -18,6 +18,8 @@ public class Board : MonoBehaviour //Responsible for word bank management and de
 
     private void Start()
     {
+        //read json file and populate an array to feed to 'SetWordBank'
+        wordBank = WordInput.GetWordsFromJsonFile().ToList();
         SetWordBank(wordBank);
         SetWordsAtBoard();
         initializeBoards();

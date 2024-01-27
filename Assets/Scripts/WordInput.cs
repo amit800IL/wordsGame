@@ -22,7 +22,7 @@ public class WordInput : MonoBehaviour
     public InputField inputField;
     public Text submitButtonText;
     public Text promptText;
-    string path = @".\words.txt";
+    public static string path = @".\words.txt";
     private List<string> words;
     private int playerIndex = 0;
     public string[] prompts;
@@ -71,7 +71,6 @@ public class WordInput : MonoBehaviour
         {
             return;
         }
-        promptText.text = selectedPrompts[playerIndex];
         string answer = inputField.text;
         if (string.IsNullOrWhiteSpace(answer))
         {
@@ -91,8 +90,10 @@ public class WordInput : MonoBehaviour
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
             int numberOfScenes = SceneManager.sceneCountInBuildSettings;
             SceneManager.LoadScene((currentSceneIndex + 1) % numberOfScenes);
+            return;
         }
         playerIndex++;
+        promptText.text = selectedPrompts[playerIndex];
         inputField.text = "";
     }
 
@@ -117,7 +118,7 @@ public class WordInput : MonoBehaviour
         }
     }
 
-    public string[] GetWordsFromJsonFile()
+    public static string[] GetWordsFromJsonFile()
     {
         string wordsInJson;
         using (StreamReader sr = new StreamReader(path))
