@@ -1,0 +1,138 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3909159214287427108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4937270166362006900}
+  - component: {fileID: 913757349946182640}
+  - component: {fileID: 1133851530175755507}
+  - component: {fileID: 7706620932206166541}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4937270166362006900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3909159214287427108}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 17.876085, y: 12.959484, z: -1.8000002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &913757349946182640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3909159214287427108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59199cf8db5a6aa40ae20040fc33a4a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wordPrefab: {fileID: 4543447523003825900, guid: 883b318c3a6ad5a42ab2eae570b4e4f6,
+    type: 3}
+  WordObjects: []
+  spawnHeight: 5
+  spawnAreaSize: 15
+  board: {fileID: 1133851530175755507}
+  letterBlockCreator: {fileID: 7706620932206166541}
+--- !u!114 &1133851530175755507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3909159214287427108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d745b12f90e585499a58c24088a58e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLettersAmountOnBoard: 50
+  wordBank:
+  - hy
+  - by
+  - ny
+  - ty
+  - ly
+  - ay
+  - gy
+  - za
+  - bo
+  - botnim
+  - shock
+  - a
+  - b
+  - c
+  - f
+  - d
+  - e
+  - g
+  - h
+  - j
+  - k
+  - m
+  - l
+  - n
+  - o
+  wordSpawner: {fileID: 913757349946182640}
+--- !u!114 &7706620932206166541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3909159214287427108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc15b059084e5254ea8ccd4e0cf4e931, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  letterTextures:
+  - {fileID: 2800000, guid: 0c4cdc3242d12d74cb7c1a5acb4c7a37, type: 3}
+  - {fileID: 2800000, guid: a4e4a00e9b035b94d8c8565828549439, type: 3}
+  - {fileID: 2800000, guid: cc6186aa4f8ec014c907fb8f9cb7fabf, type: 3}
+  - {fileID: 2800000, guid: 2f2fe36160d9ce64b936440e45ac73db, type: 3}
+  - {fileID: 2800000, guid: 3ef28e4c40803ac4c9171882cbc3c223, type: 3}
+  - {fileID: 2800000, guid: 3d4461f4198b01540b15d6436a3a735c, type: 3}
+  - {fileID: 2800000, guid: 91d8e826e60aa964493a3b895f0de8cd, type: 3}
+  - {fileID: 2800000, guid: d80a821cd2a63214aa68ab8c22aee9fa, type: 3}
+  - {fileID: 2800000, guid: e422b18e0b8d6e242a7859899ff69d78, type: 3}
+  - {fileID: 2800000, guid: e3ef27fc79b05954eaf8966b51f83ab1, type: 3}
+  - {fileID: 2800000, guid: d85ea5dcb07de4548ae766d924c9748d, type: 3}
+  - {fileID: 2800000, guid: 7617db7ae678c8746a171627d26b3fda, type: 3}
+  - {fileID: 2800000, guid: 145aeed5e8cc7ea4dbaedb244c12fb3e, type: 3}
+  - {fileID: 2800000, guid: 54870f2d0f48f0f46aaea51282e9f242, type: 3}
+  - {fileID: 2800000, guid: 880c21bbf1c101845b9eb123deec6877, type: 3}
+  - {fileID: 2800000, guid: 8dd50a01e2c4c8c48851cdf8077b9eb4, type: 3}
+  - {fileID: 2800000, guid: 67e75c231b0171744a7fbab59647983e, type: 3}
+  - {fileID: 2800000, guid: 9a439a28653e15948bfb31405f20fb06, type: 3}
+  - {fileID: 2800000, guid: 7b3c5041d93383f47b67d084626b9086, type: 3}
+  - {fileID: 2800000, guid: 3de5641185b9b674fab3a4a9a97af6c4, type: 3}
+  - {fileID: 2800000, guid: 3cf49e6043344ac438720bf762dd70e1, type: 3}
+  - {fileID: 2800000, guid: ada66803382137e4dae32637ba8307ca, type: 3}
+  - {fileID: 2800000, guid: 5bbe646b273905849a6ccffc42e225ee, type: 3}
+  - {fileID: 2800000, guid: 854a2f8de5255f14893aa8aae8331d72, type: 3}
+  - {fileID: 2800000, guid: 98f10ea2b18e907449da8334d1265614, type: 3}
+  - {fileID: 2800000, guid: cfe8ab5d5e1640648a14d7c04eb052c5, type: 3}
+  letterShader: {fileID: -6465566751694194690, guid: 144217f6dc955e041a272bd663c34ea8,
+    type: 3}
+  blockPrefab: {fileID: 1222637153578160970, guid: af7688b4d94a8d245980b401ad54c0b4,
+    type: 3}

@@ -10,7 +10,7 @@ public class Word : MonoBehaviour
     [SerializeField] private float letterScale;
 
     [SerializeField] private float fixTorque = 1;
-    [SerializeField] private Rigidbody boxRigidbody;
+    [SerializeField] public Rigidbody boxRigidbody;
 
     public BoxCollider boxCollider => GetComponentInChildren<BoxCollider>();
 

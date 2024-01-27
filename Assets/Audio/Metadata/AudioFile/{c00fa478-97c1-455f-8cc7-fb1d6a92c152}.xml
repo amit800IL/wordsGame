@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{c00fa478-97c1-455f-8cc7-fb1d6a92c152}">
+		<property name="assetPath">
+			<value>Almost Time.ogg</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.4017006802721088</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d8b52978-6766-4dd9-b0c9-3b1813e59d13}</destination>
+		</relationship>
+	</object>
+</objects>

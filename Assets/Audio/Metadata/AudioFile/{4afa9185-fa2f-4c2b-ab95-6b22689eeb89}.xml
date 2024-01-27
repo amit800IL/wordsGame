@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{4afa9185-fa2f-4c2b-ab95-6b22689eeb89}">
+		<property name="assetPath">
+			<value>Tu Bishvarr LOOP.ogg</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>62.181814058956917</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{d8b52978-6766-4dd9-b0c9-3b1813e59d13}</destination>
+		</relationship>
+	</object>
+</objects>
