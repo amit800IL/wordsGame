@@ -8,9 +8,13 @@ public class HookController : MonoBehaviour
     [SerializeField] private PlayerController playerController;
     [Space, SerializeField] private PlayerInputSO playerInput;
 
+    [Space, Header("Graphics Settings")]
+    [SerializeField] private Transform ropeConnectionPoint;
+
     [Space, Header("Properties")]
     [SerializeField] private float maxHookRange;
     [SerializeField] private float hookExtendSpeed, hookRetractSpeed;
+
     [Header("Spherecast Settings")]
     [SerializeField] private LayerMask wordBoxesLayerMask;
     [SerializeField] private float sphereCastRadius;
@@ -19,6 +23,8 @@ public class HookController : MonoBehaviour
     [Space, Header("Components")]
     [SerializeField] private Transform hookTransform;
     [SerializeField] private LineRenderer ropeLineRenderer;
+
+    
 
     private IEnumerator ExtendHookLoop()
     {
@@ -68,6 +74,7 @@ public class HookController : MonoBehaviour
             yield return null;
         }
 
+        hookTransform.localPosition = Vector3.zero;
         playerController.playerMode = (heldWord == null) ? PlayerController.PlayerMode.Roaming : PlayerController.PlayerMode.HoldingWord;
     }
 
@@ -94,7 +101,7 @@ public class HookController : MonoBehaviour
     {
         if(ropeLineRenderer != null)
         {
-            ropeLineRenderer.SetPosition(0, transform.position);
+            ropeLineRenderer.SetPosition(0, ropeConnectionPoint.position);
             ropeLineRenderer.SetPosition(1,hookTransform.position);
         }
     }

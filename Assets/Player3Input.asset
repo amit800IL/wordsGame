@@ -45,11 +45,11 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     m_Flags: 0
-  <Swivel>k__BackingField:
-    m_Name: Swivel
+  <Shoot>k__BackingField:
+    m_Name: Shoot
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 7ab74cc6-4b58-4179-9cb9-6927da64e2e9
+    m_Id: 26d30df4-d9d6-43c2-a9fc-1a88ea6be605
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
