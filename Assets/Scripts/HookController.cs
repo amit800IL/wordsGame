@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HookController : MonoBehaviour
 {
-    //[Header("Settings")]
-    [SerializeField] private PlayerInputSO playerInput;
+    [SerializeField] private PlayerController playerController;
+    [Space, SerializeField] private PlayerInputSO playerInput;
 
     [Space, Header("Properties")]
     [SerializeField] private float maxHookRange;
@@ -15,10 +15,10 @@ public class HookController : MonoBehaviour
     [SerializeField] private Transform hookTransform;
     [SerializeField] private LineRenderer ropeLineRenderer;
 
-    private IEnumerator ExtendHook()
-    {
+    private IEnumerator ExtendHookLoop()
+    {        
         float hookDistance = Vector3.Distance(hookTransform.position, transform.position);
-        while(hookDistance<maxHookRange)
+        while (hookDistance < maxHookRange)
         {
             hookTransform.position += hookTransform.up * hookExtendSpeed * Time.deltaTime;
 
@@ -27,17 +27,37 @@ public class HookController : MonoBehaviour
         }
     }
 
-    private IEnumerator RetractHook()
-    {
+    private IEnumerator RetractHookLoop()
+    {        
         Vector3 hookOffset = hookTransform.position - transform.position;
-        while(Vector3.Dot(hookOffset, hookTransform.up)>0)
+        while (Vector3.Dot(hookOffset, hookTransform.up) > 0)
         {
             hookTransform.position -= hookTransform.up * hookRetractSpeed * Time.deltaTime;
 
             hookOffset = hookTransform.position - transform.position;
             yield return null;
         }
+    }
 
+    private void ExtendHook()
+    {
+        if(playerController.playerMode == PlayerController.PlayerMode.Roaming)
+        {
+            //StopAllCoroutines();
+            playerController.playerMode = PlayerController.PlayerMode.HookExtends;
+            StartCoroutine(ExtendHookLoop());
+        }
+    }
+
+    private void RetractHook()
+    {
+        if (playerController.playerMode == PlayerController.PlayerMode.HookExtends)
+        {
+            StopAllCoroutines();
+            playerController.playerMode = PlayerController.PlayerMode.HookRetracts;
+            StartCoroutine(RetractHookLoop());
+            playerController.playerMode = PlayerController.PlayerMode.Roaming;
+        }
     }
 
     private void LateUpdate()
@@ -57,13 +77,13 @@ public class HookController : MonoBehaviour
 
     private void OnEnable()
     {
-        playerInput.Shoot.performed += _ => StartCoroutine(ExtendHook());
-        playerInput.Shoot.performed += _ => StartCoroutine(RetractHook());
+        playerInput.Shoot.performed += _ => ExtendHook();
+        playerInput.Shoot.performed += _ => RetractHook();
     }
 
     private void OnDisable()
     {
-        playerInput.Shoot.performed -= _ => StartCoroutine(ExtendHook());
-        playerInput.Shoot.performed -= _ => StartCoroutine(RetractHook());
+        playerInput.Shoot.performed -= _ => ExtendHook();
+        playerInput.Shoot.performed -= _ => RetractHook();
     }
 }
