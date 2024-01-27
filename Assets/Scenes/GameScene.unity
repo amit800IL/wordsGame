@@ -669,7 +669,7 @@ Transform:
   m_GameObject: {fileID: 476132551}
   serializedVersion: 2
   m_LocalRotation: {x: -0.6830127, y: -0.18301266, z: -0.18301266, w: 0.6830127}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1386,7 +1386,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
@@ -1411,7 +1411,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 7d1237a983c40954bbfec81578f46925, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2035,11 +2035,13 @@ MonoBehaviour:
   playerController: {fileID: 1577342891}
   playerInput: {fileID: 11400000, guid: 4f1d9d46b6b93d042a5e27b829c4aa47, type: 2}
   maxHookRange: 20
-  hookExtendSpeed: 15
-  hookRetractSpeed: 20
+  hookExtendSpeed: 40
+  hookRetractSpeed: 35
   wordBoxesLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  sphereCastRadius: 0.5
+  castOffset: -0.25
   hookTransform: {fileID: 1254944875}
   ropeLineRenderer: {fileID: 680537683}
 --- !u!114 &1577342891
@@ -2381,7 +2383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1993810105
 BoxCollider:
   m_ObjectHideFlags: 0

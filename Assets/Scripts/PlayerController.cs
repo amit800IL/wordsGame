@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public enum PlayerMode { Roaming, HookExtends, HookRetracts}
+    public enum PlayerMode { Roaming, HookExtends, HookRetracts, HoldingWord}
 
     [SerializeField] private PlayerMode _playerMode;
     public PlayerMode playerMode
@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
         {
             _playerMode = value;
 
-            movementController.enabled = (value == PlayerMode.Roaming);
+            movementController.enabled = (value == PlayerMode.Roaming || value == PlayerMode.HoldingWord);
             swivelController.enabled = (value == PlayerMode.Roaming);
         }
     }
