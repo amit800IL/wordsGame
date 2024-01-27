@@ -78,12 +78,12 @@ public class HookController : MonoBehaviour
     private void OnEnable()
     {
         playerInput.Shoot.performed += _ => ExtendHook();
-        playerInput.Shoot.performed += _ => RetractHook();
+        //playerInput.Shoot.performed += _ => RetractHook();
     }
 
     private void OnDisable()
     {
         playerInput.Shoot.performed -= _ => ExtendHook();
-        playerInput.Shoot.performed -= _ => RetractHook();
+        //playerInput.Shoot.performed -= _ => RetractHook();
     }
 }
